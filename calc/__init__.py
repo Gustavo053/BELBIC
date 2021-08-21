@@ -3,20 +3,20 @@ def Ath(sensors):
     return bigger
 
 
-def delta_vi(alpha, sensors_input, rew):
+def delta_vi(alpha, sensors_input, rew, A):
     v = []
 
-    for si in sensors_input:
-        v.append(alpha * (si * rew))
+    for i in range(len(sensors_input)):
+        v.append(alpha * (sensors_input[i] * max(0, rew - sensors_input[i])))
 
     return v
 
 
-def delta_wi(beta, sensors_input, rew):
+def delta_wi(beta, sensors_input, rew, E_dot):
     w = []
 
     for si in sensors_input:
-        w.append(beta * (si * rew))
+        w.append(beta * (si * max(E_dot - rew)))
 
     return w
 
