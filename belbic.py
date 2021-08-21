@@ -26,7 +26,7 @@ def thalamus(sensors_input):
 
 def sensory_cortex(sensors_input):
     vi = calc.delta_vi(alpha, sensors_input, rew, A)
-    wi = calc.delta_wi(beta, sensors_input, rew)
+    wi = calc.delta_wi(beta, sensors_input, rew, E_dot)
 
     return vi, wi
 
