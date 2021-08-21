@@ -14,6 +14,38 @@ A = []
 
 sensors_input = [0]
 
+kp = 3.84  # 3.84
+ki = 1.39  # 1.39
+kd = 2.0  # 2.00
+
+h = 0.01
+
+u = 0
+
+# erro inicial
+eant = 0
+# parte integrativa inicial
+iant = 0
+
+iMax = 5
+uMax = 5
+
+
+def SI(e, tMax):
+    P = e * kp
+    I = iant + (ki * h) * (e + eant)
+    D = (kd/h) * (e - eant)
+
+    if (I > iMax):
+        I = iMax
+    elif (I < 0):
+        I = 0
+
+    dedt = (e - eant)/h
+    si = P + I + D
+
+    return si, dedt
+
 
 def thalamus(sensors_input):
     global Ath
