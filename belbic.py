@@ -1,9 +1,9 @@
 import calc
 
 # initial values
-alpha = 6
-beta = 9
-rew = 4
+alpha = 0
+beta = 0
+rew = 0
 
 Ath = 0
 E_dot = 0
@@ -12,7 +12,7 @@ E = 0
 O = []
 A = []
 
-sensors_input = [0]
+sensors_input = 0
 
 kp = 3.84  # 3.84
 ki = 1.39  # 1.39
@@ -38,7 +38,7 @@ def SI(e, tMax):
 
     if (I > iMax):
         I = iMax
-    elif (I < 0):
+    elif (I <= 0):
         I = 0
 
     dedt = (e - eant)/h
@@ -73,13 +73,17 @@ def orbifrontal_cortex(wi, sensors_input, rew):
     return O, E_dot
 
 
-def amygdala(Ath, vi, sensors_input, rew):
+def amygdala(vi, sensors_input, rew):
     global A
     global E
 
-    A.append(Ath)
+    # A.append(Ath)
 
     A = calc.Am(vi, sensors_input)
     E = calc.e(A, O) * rew
 
     return A, E
+
+
+def run(alpha, beta):
+    return None

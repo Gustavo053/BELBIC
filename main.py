@@ -1,0 +1,3 @@
+import belbic
+
+belbic.run()

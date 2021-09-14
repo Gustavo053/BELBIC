@@ -4,19 +4,13 @@ def Ath(sensors):
 
 
 def delta_vi(alpha, sensors_input, rew, A):
-    v = []
-
-    for i in range(len(sensors_input)):
-        v.append(alpha * (sensors_input[i] * max(0, rew - sensors_input[i])))
+    v = alpha * (sensors_input * max(0, rew - sensors_input))
 
     return v
 
 
 def delta_wi(beta, sensors_input, rew, E_dot):
-    w = []
-
-    for si in sensors_input:
-        w.append(beta * (si * max(E_dot - rew)))
+    w = beta * (si * max(E_dot - rew))
 
     return w
 
@@ -25,10 +19,10 @@ def e(A, O):
     sum_a = 0
     sum_o = 0
     result_e = 0
-    for i in vi:
+    for i in A:
         sum_a = sum_a + i
 
-    for j in wi:
+    for j in O:
         sum_o = sum_o + j
 
     result_e = sum_a - sum_o
@@ -40,10 +34,10 @@ def e_dot(A, O):
     sum_a = 0
     sum_o = 0
     result_e_dot = 0
-    for i in vi:
+    for i in A:
         sum_a = sum_a + i
 
-    for j in wi:
+    for j in O:
         sum_o = sum_o + j
 
     result_e_dot = sum_a - sum_o
@@ -52,19 +46,12 @@ def e_dot(A, O):
 
 
 def Ot(wi, si):
-    result_ot = []
-
-    for i in range(len(wi)):
-        result_ot.append(wi[i] * si[i])
+    result_ot = wi * si
 
     return result_ot
 
 
 def Am(vi, si):
-    result_am = []
-
-    for i in range(len(vi)):
-        if (si[i] != None):
-            result_am.append(vi[i] * si[i])
+    result_am = vi * si
 
     return result_am
