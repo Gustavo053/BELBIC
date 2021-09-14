@@ -68,8 +68,8 @@ def run():
         ePlot[i] = ve[i]
         si, dedt = belbic.SI(ve[i], tMax)
         vi, wi = belbic.sensory_cortex(si)
-        O, E_dot = belbic.orbifrontal_cortex(wi, si, ve[i])  # vi[i] = rew/EC
-        A, E = belbic.amygdala(vi, si, ve[i])  # vi[i] = rew/EC
+        O, E_dot = belbic.orbifrontal_cortex(wi, si, ve[i])  # ve[i] = rew/EC
+        A, E = belbic.amygdala(vi, si, ve[i])  # ve[i] = rew/EC
 
         uPlot[i] = A - O  # (signal amydgala) - (signal orbitofrontal cortex)
 
