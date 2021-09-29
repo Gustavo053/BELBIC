@@ -23,8 +23,8 @@ nPontos = round(tMax / h)
 
 uMax = 5
 
-eantTest = 0
-iantTest = 0
+eant = 0
+iant = 0
 
 vref = 1*numpy.ones(nPontos)
 vr = numpy.zeros(nPontos)
@@ -90,25 +90,21 @@ def run():
     global vt
     global vref
     global T
-    global eantTest
-    global iantTest
-
-    # eant = 0
-    # iant = 0
+    global eant
+    global iant
 
     A = 0
     O = 0
     E = 0
     E_dot = 0
     for i in range(1, nPontos):
-        # print(eant)
         ve[i] = vref[i - 1] - vs[i - 1]
         # print(f'error: ', ve[i])
         # O BELBIC vai entrar aqui
         ePlot[i] = ve[i]
-        si, dedt, eant, iant = belbic.SI(ve[i], tMax, eantTest, iantTest)
-        eantTest = eant
-        iantTest = iant
+        si, dedt, eantNew, iantNew = belbic.SI(ve[i], tMax, eant, iant)
+        eant = eantNew
+        iant = iantNew
         vi, wi = belbic.sensory_cortex(si, ve[i]**2, A, E_dot)
 
         # ve[i] = rew/EC

@@ -13,7 +13,7 @@ def delta_vi(alpha, sensors_input, rew, A):
 def delta_wi(beta, sensors_input, rew, E_dot):
     w = beta * (sensors_input * (E_dot - rew))
 
-    print(f'wi: ', w)
+    # print(f'wi: ', w)
 
     return w
 

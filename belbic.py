@@ -28,8 +28,8 @@ uMax = 5
 
 
 def SI(e, tMax, eant, iant):
-    print(f'eant: ', eant)
-    print(f'iant: ', iant)
+    # print(f'eant: ', eant)
+    # print(f'iant: ', iant)
     P = e * kp
     I = iant + (ki * h) * (e + eant)
     D = (kd/h) * (e - eant)
