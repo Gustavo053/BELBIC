@@ -140,6 +140,7 @@ def run():
     plt.title('Saída do sensor')
     plt.xlabel('time (s)')
     plt.ylabel('terminal voltage (vt)')
+    plt.grid()
     plt.show()
 
     # plt.plot(T, vs)
