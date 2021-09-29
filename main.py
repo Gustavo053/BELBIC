@@ -1,3 +1,3 @@
-import belbic
+import model
 
-belbic.run()
+model.run()
