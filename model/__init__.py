@@ -97,6 +97,9 @@ def run():
     O = 0
     E = 0
     E_dot = 0
+
+    vi = 0.81
+    wi = 1.0
     for i in range(1, nPontos):
         ve[i] = vref[i - 1] - vs[i - 1]
         # print(f'error: ', ve[i])
@@ -105,11 +108,13 @@ def run():
         si, dedt, eantNew, iantNew = belbic.SI(ve[i], tMax, eant, iant)
         eant = eantNew
         iant = iantNew
-        vi, wi = belbic.sensory_cortex(si, ve[i]**2, A, E_dot)
+        viNew, wiNew = belbic.sensory_cortex(si, abs(ve[i]), A, E_dot, vi, wi)
+        vi = viNew
+        wi = wiNew
 
         # ve[i] = rew/EC
-        O, E_dot = belbic.orbifrontal_cortex(wi, si, A, O, ve[i]**2)
-        A, E = belbic.amygdala(vi, si, A, O, ve[i]**2)  # ve[i] = rew/EC
+        O, E_dot = belbic.orbifrontal_cortex(wi, si, A, O, abs(ve[i]))
+        A, E = belbic.amygdala(vi, si, A, O, abs(ve[i]))  # ve[i] = rew/EC
 
         uPlot[i] = A - O  # (signal amydgala) - (signal orbitofrontal cortex)
 

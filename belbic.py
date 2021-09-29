@@ -1,8 +1,8 @@
 import calc
 
 # initial values
-alpha = 0.5  # 0.79
-beta = 0.02
+alpha = 0.79
+beta = 0.01
 rew = 0
 
 Ath = 0
@@ -14,9 +14,9 @@ A = 0
 
 sensors_input = 0
 
-kp = 2.84  # 3.84
-ki = 3  # 1.39
-kd = 1  # 2.00
+kp = 3.84
+ki = 1.39
+kd = 2.00
 
 h = 0.01
 
@@ -57,14 +57,14 @@ def thalamus(sensors_input):
     return sensors_input, Ath
 
 
-def sensory_cortex(sensors_input, rew, A, E_dot):
+def sensory_cortex(sensors_input, rew, A, E_dot, vi, wi):
     global alpha
     global beta
 
-    vi = calc.delta_vi(alpha, sensors_input, rew, A)
-    wi = calc.delta_wi(beta, sensors_input, rew, E_dot)
+    viNew = calc.delta_vi(alpha, sensors_input, rew, A) + vi
+    wiNew = calc.delta_wi(beta, sensors_input, rew, E_dot) + wi
 
-    return vi, wi
+    return viNew, wiNew
 
 
 def orbifrontal_cortex(wi, sensors_input, A, O, rew):

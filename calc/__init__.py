@@ -4,7 +4,7 @@ def Ath(sensors):
 
 
 def delta_vi(alpha, sensors_input, rew, A):
-    v = alpha * (sensors_input * max(0, rew - sensors_input))
+    v = alpha * (sensors_input * max(0, rew - A))
 
     # print(f'vi: ', v)
     return v
