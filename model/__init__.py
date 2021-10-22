@@ -12,21 +12,23 @@ taue = 1
 # GERADOR
 kg = 1
 taug = 1
-# SENSOR DE TENS�O NA REALIMENTA��O
+# SENSOR DE TENSÃO NA REALIMENTAÇÃO
 kr = 1
 taur = 0.06
 
-tMax = 20
+tMax = 60
 T = 0
 h = 0.01
 nPontos = round(tMax / h)
 
-uMax = 5
+uMax = 3.3
 
 eant = 0
 iant = 0
 
-vref = 1*numpy.ones(nPontos)
+vref1 = 1*numpy.ones(round(nPontos/2))
+vref2 = 2.5*numpy.ones(round(nPontos/2))
+vref = numpy.append(vref1, vref2)
 vr = numpy.zeros(nPontos)
 vf = numpy.zeros(nPontos)
 vt = numpy.zeros(nPontos)
@@ -102,22 +104,24 @@ def run():
 
     vi = 0.81
     wi = 1.0
+
     for i in range(1, nPontos):
         ve[i] = vref[i - 1] - vs[i - 1]
-        # print(f'error: ', ve[i])
-        # O BELBIC vai entrar aqui
-        rew = abs(ve[i])
+        # O BELBIC entra aqui
         ePlot[i] = ve[i]
         si, dedt, eantNew, iantNew = belbic.SI(ve[i], tMax, eant, iant)
         eant = eantNew
         iant = iantNew
+
+        # rew/EC = abs(error)
+        rew = abs(ve[i])
+
         viNew, wiNew = belbic.sensory_cortex(si, rew, A, E_dot, vi, wi)
         vi = viNew
         wi = wiNew
 
-        # ve[i] = rew/EC
         O, E_dot = belbic.orbifrontal_cortex(wi, si, A, O, rew)
-        A, E = belbic.amygdala(vi, si, A, O, rew)  # ve[i] = rew/EC
+        A, E = belbic.amygdala(vi, si, A, O, rew)
 
         uPlot[i] = A - O  # (signal amydgala) - (signal orbitofrontal cortex)
 
@@ -138,12 +142,25 @@ def run():
         # print(f'vt: ', vt[i])
         # print(f'vs: ', vs[i])
 
+    plt.figure(figsize=(10, 8))
+    plt.subplot(2, 1, 1)
+    plt.axis([-1, tMax, 0, 4])
     plt.plot(tPlot, vs, 'k', label='sensor output')
+    plt.plot(tPlot, vref, 'b', label='reference')
     plt.legend()
-    plt.title('Saída do sensor')
-    plt.xlabel('time (s)')
+    plt.title('Sensor output')
     plt.ylabel('terminal voltage (vt)')
     plt.grid()
+
+    plt.subplot(2, 1, 2)
+    plt.axis([-1, tMax, 0, 3.5])
+    plt.plot(tPlot, uPlot, 'k', label='control signal')
+    plt.legend()
+    plt.title('Control signal')
+    plt.xlabel('time (s)')
+    plt.ylabel('Voltage (V)')
+    plt.grid()
+
     plt.show()
 
     # plt.plot(T, vs)

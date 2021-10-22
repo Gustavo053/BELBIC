@@ -1,7 +1,7 @@
 import calc
 
 # initial values
-alpha = 0.79
+alpha = 0.30
 beta = 0.01
 rew = 0
 
@@ -14,17 +14,16 @@ A = 0
 
 sensors_input = 0
 
-kp = 3.84
-ki = 1.39
-kd = 2.00
+kp = 3.91
+ki = 0.38
+kd = 0.63
 
 h = 0.01
 
 u = 0
 
 
-iMax = 5
-uMax = 5
+iMax = 3.3
 
 
 def SI(e, tMax, eant, iant):
