@@ -27,7 +27,7 @@ eant = 0
 iant = 0
 
 vref1 = 1*numpy.ones(round(nPontos/2))
-vref2 = 2.5*numpy.ones(round(nPontos/2))
+vref2 = 2*numpy.ones(round(nPontos/2))
 vref = numpy.append(vref1, vref2)
 vr = numpy.zeros(nPontos)
 vf = numpy.zeros(nPontos)
