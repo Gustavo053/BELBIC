@@ -1,7 +1,7 @@
 import calc
 
 # initial values
-alpha = 0.30
+alpha = 0.45
 beta = 0.01
 rew = 0
 
@@ -14,8 +14,8 @@ A = 0
 
 sensors_input = 0
 
-kp = 3.91
-ki = 0.38
+kp = 3.98
+ki = 0.58
 kd = 0.63
 
 h = 0.01

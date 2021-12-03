@@ -108,7 +108,12 @@ def run():
     for i in range(1, nPontos):
         ve[i] = vref[i - 1] - vs[i - 1]
         # O BELBIC entra aqui
+
+        belbic.alpha *= h
+        belbic.beta *= h
+
         ePlot[i] = ve[i]
+
         si, dedt, eantNew, iantNew = belbic.SI(ve[i], tMax, eant, iant)
         eant = eantNew
         iant = iantNew
@@ -144,7 +149,7 @@ def run():
 
     plt.figure(figsize=(10, 8))
     plt.subplot(2, 1, 1)
-    plt.axis([-1, tMax, 0, 4])
+    plt.axis([-1, tMax, 0, 10])
     plt.plot(tPlot, vs, 'k', label='sensor output')
     plt.plot(tPlot, vref, 'b', label='reference')
     plt.legend()
