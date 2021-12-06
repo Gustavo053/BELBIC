@@ -114,7 +114,7 @@ def run():
 
         ePlot[i] = ve[i]
 
-        si, dedt, eantNew, iantNew = belbic.SI(ve[i], tMax, eant, iant)
+        si, dedt, eantNew, iantNew = belbic.SI(ve[i], eant, iant)
         eant = eantNew
         iant = iantNew
 

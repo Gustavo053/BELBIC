@@ -5,28 +5,16 @@ alpha = 0.45
 beta = 0.01
 rew = 0
 
-Ath = 0
-E_dot = 0
-E = 0
-
-O = 0
-A = 0
-
-sensors_input = 0
-
 kp = 3.98
 ki = 0.58
 kd = 0.63
 
 h = 0.01
 
-u = 0
-
-
 iMax = 3.3
 
 
-def SI(e, tMax, eant, iant):
+def SI(e, eant, iant):
     # print(f'eant: ', eant)
     # print(f'iant: ', iant)
     P = e * kp
@@ -48,7 +36,6 @@ def SI(e, tMax, eant, iant):
 
 
 def thalamus(sensors_input):
-    global Ath
     Ath = calc.Ath(sensors_input)
     print(f'Ath: ', Ath)
     print(f'sensors_input', sensors_input)
@@ -67,8 +54,6 @@ def sensory_cortex(sensors_input, rew, A, E_dot, vi, wi):
 
 
 def orbifrontal_cortex(wi, sensors_input, A, O, rew):
-    global E_dot
-
     O = calc.Ot(wi, sensors_input)
     E_dot = calc.e_dot(A, O) * rew
 
@@ -76,8 +61,6 @@ def orbifrontal_cortex(wi, sensors_input, A, O, rew):
 
 
 def amygdala(vi, sensors_input, A, O, rew):
-    global E
-
     # A.append(Ath)
 
     A = calc.Am(vi, sensors_input)
