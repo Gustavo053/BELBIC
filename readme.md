@@ -33,7 +33,7 @@ Balkenius to mimic those parts of the brain which are known to produce emotion
 ## **Results**
 
 These results were obtained according to the plant simulation model
-implemented in the file, in the directory models.
+implemented in the file, in the directory model.
 
 <h1 align="center">
 	<img src="./readme/Figure_1.png" alt="Stack" width="600" />
