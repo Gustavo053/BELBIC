@@ -11,22 +11,28 @@
 	Controller (BELBIC) algorithm.
 </p>
 
-<p align="center">
-	<a href="#What-is">What is?</a> • <a href="#Tech-stack">Tech Stack</a> •
-	<a href="#Results">Results</a>
-</p>
+<!-- <p align="center">
+	<a href="">What is?</a> • <a href="">Tech Stack</a> •
+	<a href="">Results</a>
+</p> -->
 
-## **What is?** BELBIC (Brain Emotional Learning Based Intelligent Controller)
+## **What is?**
 
+BELBIC (Brain Emotional Learning Based Intelligent Controller)
 is one such controller which is proposed by Caro Lucas, Danial Shahmirzadi and
 Nima Sheikholeslami and adopts the network model developed by Moren and
 Balkenius to mimic those parts of the brain which are known to produce emotion
 (namely, the amygdala, orbitofrontal cortex, thalamus and sensory input cortex).
 
-## **Tech Stack** - [Python](https://www.python.org/) -
+## **Tech Stack**
 
-[Numpy](https://numpy.org/) - [Matplotlib](https://matplotlib.org/) - ##
-**Results** These results were obtained according to the plant simulation model
+- [Python](https://www.python.org/)
+- [Numpy](https://numpy.org/)
+- [Matplotlib](https://matplotlib.org/)
+
+## **Results**
+
+These results were obtained according to the plant simulation model
 implemented in the file, in the directory models.
 
 <h1 align="center">
@@ -54,4 +60,7 @@ implemented in the file, in the directory models.
 	<br />
 </h1>
 
-## **Thank you** Gustavo Pereira da Fonseca <br /> [TAPIOCA](http://tapioca.eaj.ufrn.br/)
+## **Thank you**
+
+Gustavo Pereira da Fonseca <br />
+[TAPIOCA](http://tapioca.eaj.ufrn.br/)
