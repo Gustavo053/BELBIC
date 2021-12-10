@@ -22,7 +22,7 @@ BELBIC (Brain Emotional Learning Based Intelligent Controller)
 is one such controller which is proposed by Caro Lucas, Danial Shahmirzadi and
 Nima Sheikholeslami and adopts the network model developed by Moren and
 Balkenius to mimic those parts of the brain which are known to produce emotion
-(namely, the amygdala, orbitofrontal cortex, thalamus and sensory input cortex).
+(the amygdala, orbitofrontal cortex, thalamus and sensory input cortex).
 
 ## **Tech Stack**
 
