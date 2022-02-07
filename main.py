@@ -1,3 +1,3 @@
-import model
+import plant
 
-model.run()
+plant.run()

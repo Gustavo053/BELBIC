@@ -3,7 +3,6 @@ import calc
 # initial values
 alpha = 0.45
 beta = 0.01
-rew = 0
 
 kp = 3.98
 ki = 0.58
@@ -17,6 +16,8 @@ iMax = 3.3
 def SI(e, eant, iant):
     # print(f'eant: ', eant)
     # print(f'iant: ', iant)
+    global h
+    
     P = e * kp
     I = iant + (ki * h) * (e + eant)
     D = (kd/h) * (e - eant)
